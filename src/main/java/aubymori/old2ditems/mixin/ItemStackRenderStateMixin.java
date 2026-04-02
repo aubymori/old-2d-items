@@ -1,9 +1,6 @@
 package aubymori.old2ditems.mixin;
 
-import aubymori.old2ditems.ObjectWithBakedQuads;
-import aubymori.old2ditems.ObjectWithIdentifier;
-import aubymori.old2ditems.ObjectWithItemClusterRenderState;
-import aubymori.old2ditems.Old2DItemsConfig;
+import aubymori.old2ditems.*;
 import com.mojang.blaze3d.pipeline.BlendFunction;
 import com.mojang.blaze3d.pipeline.RenderPipeline;
 import com.mojang.blaze3d.vertex.DefaultVertexFormat;
@@ -43,7 +40,7 @@ public abstract class ItemStackRenderStateMixin implements ObjectWithBakedQuads,
     private ItemDisplayContext displayContext;
     private static final RenderPipeline ITEM_ENTITY_NO_CARDINAL_SHADING = RenderPipelines.register(RenderPipeline.builder(new RenderPipeline.Snippet[] { RenderPipelines.MATRICES_FOG_LIGHT_DIR_SNIPPET
     }).withLocation("pipeline/item_entity_translucent_cull")
-        .withVertexShader(Identifier.fromNamespaceAndPath("old-2d-items", "core/rendertype_item_entity_no_cardinal_shading"))
+        .withVertexShader(Identifier.fromNamespaceAndPath(Old2DItems.MOD_ID, "core/rendertype_item_entity_no_cardinal_shading"))
         .withFragmentShader("core/rendertype_item_entity_translucent_cull")
         .withSampler("Sampler0")
         .withSampler("Sampler2")
