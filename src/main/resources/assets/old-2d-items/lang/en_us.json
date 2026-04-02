@@ -1,0 +1,18 @@
+{
+    "old-2d-items.midnightconfig.title": "Old 2D Items Settings",
+    "old-2d-items.midnightconfig.direction": "Item direction",
+    "old-2d-items.midnightconfig.direction.tooltip": "Change the way dropped items face\n\n§a§lScreen, horizontal§r:\nJava Edition (Fast Graphics)\n§a§lCamera position, horizontal§r:\nPocket Edition\n§a§lSpin§r:\nJava Edition (Fancy Graphics)\n§a§lScreen§r:\nCustom",
+    "old-2d-items.midnightconfig.enum.Direction.SCREEN_HORZ": "Screen, horizontal",
+    "old-2d-items.midnightconfig.enum.Direction.CAMERA_HORZ": "Camera position, horizontal",
+    "old-2d-items.midnightconfig.enum.Direction.SPIN": "Spin",
+    "old-2d-items.midnightconfig.enum.Direction.SCREEN": "Screen",
+    "old-2d-items.midnightconfig.flatModels": "Flat 2D item models",
+    "old-2d-items.midnightconfig.flatModels.tooltip": "Render 2D items as flat planes with no depth",
+    "old-2d-items.midnightconfig.renderBack": "Render back side",
+    "old-2d-items.midnightconfig.renderBack.tooltip": "Render the back side of flat items. Java Edition did not do this when flat items were still in the game.",
+    "old-2d-items.midnightconfig.affect3DModels": "Affect 3D models",
+    "old-2d-items.midnightconfig.affect3DModels.tooltip": "The selected item direction will also apply to 3D models, such as blocks.",
+    "old-2d-items.midnightconfig.exceptions": "Exceptions",
+    "old-2d-items.midnightconfig.exceptions.tooltip": "These items will render as they do in vanilla.",
+    "old-2d-items.midnightconfig.category.main": "Old 2D Items Settings"
+}

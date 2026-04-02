@@ -1,0 +1,31 @@
+{
+	"schemaVersion": 1,
+	"id": "old-2d-items",
+	"version": "${version}",
+	"name": "Old 2D Items",
+	"description": "Makes items 2D like in old versions of Minecraft",
+	"authors": [
+		"aubymori"
+	],
+	"contact": {
+		"homepage": "https://modrinth.com/mod/old-2d-items",
+		"sources": "https://github.com/aubymori/old-2d-items"
+	},
+	"license": "CC0-1.0",
+	"icon": "assets/old-2d-items/icon.png",
+	"environment": "*",
+	"entrypoints": {
+		"main": [
+			"aubymori.old2ditems.Old2DItems"
+		]
+	},
+	"mixins": [
+		"old-2d-items.mixins.json"
+	],
+	"depends": {
+		"fabricloader": ">=0.18.6",
+		"minecraft": "~26.1",
+		"java": ">=25",
+		"fabric-api": "*"
+	}
+}
