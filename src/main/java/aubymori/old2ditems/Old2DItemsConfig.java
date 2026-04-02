@@ -22,5 +22,23 @@ public class Old2DItemsConfig extends MidnightConfig {
 
     @Entry(category = MAIN) public static boolean affect3DModels = false;
 
-    @Entry(category = MAIN, idMode = 0) public static List<Identifier> exceptions = Lists.newArrayList(Identifier.withDefaultNamespace("decorated_pot"));
+    @Entry(category = MAIN, idMode = 0) public static List<Identifier> exceptions = Lists.newArrayList(
+        Identifier.withDefaultNamespace("decorated_pot"),
+        Identifier.withDefaultNamespace("shield"),
+        Identifier.withDefaultNamespace("white_banner"),
+        Identifier.withDefaultNamespace("orange_banner"),
+        Identifier.withDefaultNamespace("magenta_banner"),
+        Identifier.withDefaultNamespace("light_blue_banner"),
+        Identifier.withDefaultNamespace("yellow_banner"),
+        Identifier.withDefaultNamespace("pink_banner"),
+        Identifier.withDefaultNamespace("gray_banner"),
+        Identifier.withDefaultNamespace("light_gray_banner"),
+        Identifier.withDefaultNamespace("cyan_banner"),
+        Identifier.withDefaultNamespace("purple_banner"),
+        Identifier.withDefaultNamespace("blue_banner"),
+        Identifier.withDefaultNamespace("brown_banner"),
+        Identifier.withDefaultNamespace("green_banner"),
+        Identifier.withDefaultNamespace("red_banner"),
+        Identifier.withDefaultNamespace("black_banner"),
+        Identifier.withDefaultNamespace("black_banner"));
 }
