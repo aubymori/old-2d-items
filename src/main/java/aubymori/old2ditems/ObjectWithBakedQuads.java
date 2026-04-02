@@ -1,6 +1,6 @@
 package aubymori.old2ditems;
 
-import net.minecraft.client.resources.model.geometry.BakedQuad;
+import net.minecraft.client.renderer.block.model.BakedQuad;
 
 import java.util.List;
 

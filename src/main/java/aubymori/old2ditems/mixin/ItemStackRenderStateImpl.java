@@ -2,7 +2,7 @@ package aubymori.old2ditems.mixin;
 
 import aubymori.old2ditems.ObjectWithBakedQuads;
 import net.minecraft.client.renderer.item.ItemStackRenderState;
-import net.minecraft.client.resources.model.geometry.BakedQuad;
+import net.minecraft.client.renderer.block.model.BakedQuad;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.Shadow;
 
