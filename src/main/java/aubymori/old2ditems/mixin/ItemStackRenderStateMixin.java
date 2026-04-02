@@ -60,8 +60,16 @@ public abstract class ItemStackRenderStateMixin implements ObjectWithBakedQuads,
             return;
         }
 
+        if (this.layers.length < 1) {
+            return;
+        }
+        List<BakedQuad> quads = this.layers[0].prepareQuadList();
+        if (quads.size() < 1) {
+            return;
+        }
+
         RenderSetup state = RenderSetup.builder(ITEM_ENTITY_NO_CARDINAL_SHADING)
-            .withTexture("Sampler0", TextureAtlas.LOCATION_ITEMS)
+            .withTexture("Sampler0", quads.get(0).sprite().atlasLocation())
             .setOutputTarget(OutputTarget.ITEM_ENTITY_TARGET)
             .useLightmap()
             .useOverlay()
