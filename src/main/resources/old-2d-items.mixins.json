@@ -5,7 +5,7 @@
 	"mixins": [
 		"ItemEntityRendererMixin",
 		"ItemClusterRenderStateImpl",
-		"ItemStackRenderStateImpl"
+		"ItemStackRenderStateMixin"
 	],
 	"injectors": {
 		"defaultRequire": 1
