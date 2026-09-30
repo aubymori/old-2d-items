@@ -6,4 +6,6 @@ import java.util.List;
 
 public interface ObjectWithBakedQuads {
     List<BakedQuad>[] o2di$quads();
+
+    void o2di$setQuads(List<BakedQuad>[] quads);
 }
