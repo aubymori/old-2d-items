@@ -5,16 +5,17 @@ import aubymori.old2ditems.ObjectWithIdentifier;
 import aubymori.old2ditems.Old2DItems;
 import aubymori.old2ditems.Old2DItemsConfig;
 import com.llamalad7.mixinextras.injector.ModifyExpressionValue;
+import com.mojang.blaze3d.PrimitiveTopology;
 import com.mojang.blaze3d.pipeline.BlendFunction;
 import com.mojang.blaze3d.pipeline.ColorTargetState;
 import com.mojang.blaze3d.pipeline.DepthStencilState;
 import com.mojang.blaze3d.pipeline.RenderPipeline;
 import com.mojang.blaze3d.vertex.DefaultVertexFormat;
 import com.mojang.blaze3d.vertex.PoseStack;
-import com.mojang.blaze3d.vertex.VertexFormat;
 import com.mojang.math.Axis;
 import net.minecraft.client.Camera;
 import net.minecraft.client.Minecraft;
+import net.minecraft.client.renderer.BindGroupLayouts;
 import net.minecraft.client.renderer.RenderPipelines;
 import net.minecraft.client.renderer.SubmitNodeCollector;
 import net.minecraft.client.renderer.entity.ItemEntityRenderer;
@@ -66,7 +67,7 @@ public class ItemEntityRendererMixin {
     )
     private Quaternionf o2di$setItemRotation(Quaternionf quaternion, ItemEntityRenderState state) {
         if (shouldChangeItemRotation(state)) {
-            Camera cam = Minecraft.getInstance().gameRenderer.getMainCamera();
+            Camera cam = Minecraft.getInstance().gameRenderer.mainCamera();
             Quaternionf q = new Quaternionf();
 
             if (Old2DItemsConfig.direction == Old2DItemsConfig.Direction.CAMERA_HORZ) {
@@ -92,16 +93,16 @@ public class ItemEntityRendererMixin {
     )
     private void o2di$setItemVerticalRotation(ItemEntityRenderState state, PoseStack poseStack, SubmitNodeCollector submitNodeCollector, CameraRenderState camera, CallbackInfo ci) {
         if (Old2DItemsConfig.direction == Old2DItemsConfig.Direction.SCREEN && shouldChangeItemRotation(state)) {
-            poseStack.mulPose(Axis.XN.rotationDegrees(Minecraft.getInstance().gameRenderer.getMainCamera().xRot()));
+            poseStack.mulPose(Axis.XN.rotationDegrees(Minecraft.getInstance().gameRenderer.mainCamera().xRot()));
         }
     }
 
     private static final RenderPipeline.Snippet ITEM_SNIPPET_NO_CARDINAL_SHADING = RenderPipeline.builder(new RenderPipeline.Snippet[]{ MATRICES_FOG_LIGHT_DIR_SNIPPET
     }).withVertexShader(Identifier.fromNamespaceAndPath(Old2DItems.MOD_ID, "core/item_no_cardinal_shading"))
         .withFragmentShader("core/item")
-        .withSampler("Sampler0")
-        .withSampler("Sampler2")
-        .withVertexFormat(DefaultVertexFormat.ENTITY, VertexFormat.Mode.QUADS)
+        .withBindGroupLayout(BindGroupLayouts.SAMPLER0_SAMPLER1_SAMPLER2)
+        .withVertexBinding(0, DefaultVertexFormat.ENTITY)
+        .withPrimitiveTopology(PrimitiveTopology.QUADS)
         .withDepthStencilState(DepthStencilState.DEFAULT)
         .buildSnippet();
 
@@ -123,11 +124,11 @@ public class ItemEntityRendererMixin {
 
     static {
         ITEM_CUTOUT_NO_CARDINAL_SHADING_FN = Util.memoize((texture) -> {
-            RenderSetup state = RenderSetup.builder(ITEM_CUTOUT_NO_CARDINAL_SHADING).withTexture("Sampler0", texture).useLightmap().affectsCrumbling().setOutline(RenderSetup.OutlineProperty.AFFECTS_OUTLINE).createRenderSetup();
+            RenderSetup state = RenderSetup.builder(ITEM_CUTOUT_NO_CARDINAL_SHADING).withTexture("Sampler0", texture).useLightmap().useOverlay().affectsCrumbling().setOutline(RenderSetup.OutlineProperty.AFFECTS_OUTLINE).createRenderSetup();
             return RenderType.create("item_cutout_no_cardinal_shading", state);
         });
         ITEM_TRANSLUCENT_NO_CARDINAL_SHADING_FN = Util.memoize((texture) -> {
-            RenderSetup state = RenderSetup.builder(ITEM_TRANSLUCENT_NO_CARDINAL_SHADING).withTexture("Sampler0", texture).setOutputTarget(OutputTarget.ITEM_ENTITY_TARGET).useLightmap().affectsCrumbling().sortOnUpload().setOutline(RenderSetup.OutlineProperty.AFFECTS_OUTLINE).createRenderSetup();
+            RenderSetup state = RenderSetup.builder(ITEM_TRANSLUCENT_NO_CARDINAL_SHADING).withTexture("Sampler0", texture).setOutputTarget(OutputTarget.ITEM_ENTITY_TARGET).useLightmap().useOverlay().affectsCrumbling().sortOnUpload().setOutline(RenderSetup.OutlineProperty.AFFECTS_OUTLINE).createRenderSetup();
             return RenderType.create("item_translucent_no_cardinal_shading", state);
         });
     }
